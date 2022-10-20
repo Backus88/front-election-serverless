@@ -1,13 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const VerticalBar = styled.div `
-    height : ${(props)=> props.height}%;
+    height : ${(props)=> props.height}px;
     width : 30px;
     background-color:${(props)=> props.backColor} ;
+    margin-left: 5px;
+    border-radius: 5px;
 `;
 
 export const HorizontalBar = styled.div `
-    height : ${(props)=> props.height}%;
-    width : 30px;
+    height : 30px;
+    width : ${(props)=> props.width}px;
     background-color:${(props)=> props.backColor} ;
+    margin-left: 5px;
+    border-radius: 5px;
 `;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MainContainer = styled.div`
     height: 100vh;
@@ -25,13 +25,15 @@ export const MainContainer = styled.div`
         line-height: 50px;
         color: #5B84B9;
     }
-`
+`;
 
 export const RowDiv = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding-left: 5px;
+    margin-bottom: 20px;
 `;
 
 export const ColumnDiv = styled.div`

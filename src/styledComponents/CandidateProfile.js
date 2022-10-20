@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CandidateProfile = styled.div `
-    width:30%;
+    width:${(props)=> props.width}px;
     border-radius: 50%;
-    background-image: url(${(props)=> props.profileImg});
+    background: url(${(props) => props.image || 'https://static.poder360.com.br/2019/01/foto-oficial-Bolsonaro.png' });
     background-repeat: no-repeat ;
-    background-size: contain;
+    background-size: cover;
     ::after{
         content: "";
         display: block;
