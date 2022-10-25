@@ -1,15 +1,15 @@
-import { HorizontalBar } from '../styledComponents/BarChart';
-import {  RowDiv } from '../styledComponents/Containers';
-import { CardStyle } from '../styledComponents/CardStyle';
-import { CandidateProfile } from '../styledComponents/CandidateProfile';
+import { HorizontalBar } from './BarChart';
+import {  RowDiv } from '../Containers';
+import { CardStyle } from './CardStyle';
+import { CandidateProfile } from './CandidateProfile';
 import {React} from 'react';
 
 
-export default function Card(){
+export default function Card({title}){
 
 	return(
 		<CardStyle>
-			<h1>title</h1>
+			<h1>{title}</h1>
 			<RowDiv>
 				<CandidateProfile  width = {30} image = {'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuYqnT5mVWes2tdBm5hlBMrPQj8-aT3YLjfJi-oudD&s'}/>
 				<HorizontalBar width = {200} backColor = {'red'} />
@@ -21,3 +21,4 @@ export default function Card(){
 		</CardStyle>
 	);
 }
+

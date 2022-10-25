@@ -9,7 +9,9 @@ export const CardStyle = styled.div `
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding-bottom: 10px;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 10px;
     h1{
         align-self: center;
         font-size: 20px;
