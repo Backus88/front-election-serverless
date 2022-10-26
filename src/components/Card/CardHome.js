@@ -5,7 +5,7 @@ import { CandidateProfile } from './CandidateProfile';
 import {React} from 'react';
 
 
-export default function Card({title}){
+export default function CardHome({title}){
 
 	return(
 		<CardStyle>

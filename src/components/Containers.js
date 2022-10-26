@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
     height: 100vh;
-    background-color: #00BFFF;
+    width: 100%;
+    background-color: #0FBFFF;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    overflow-y: auto;
     h1{
         font-family: 'Playfair Display', serif;
         font-style: normal;
@@ -41,4 +41,12 @@ export const ColumnDiv = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+`;
+
+export const CarouselContainer = styled.div`
+    height: 70%;
+    overflow-y: scroll;
+    ::-webkit-scrollbar{
+        display: none;
+    }
 `;

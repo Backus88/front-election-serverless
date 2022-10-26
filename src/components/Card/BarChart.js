@@ -12,6 +12,12 @@ export const HorizontalBar = styled.div `
     height : 30px;
     width : ${(props)=> props.width}px;
     background-color:${(props)=> props.backColor} ;
-    margin-left: 5px;
     border-radius: 5px;
+`;
+
+export const DivBarChart = styled.div `
+    height: 30px;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
 `;
