@@ -1,5 +1,5 @@
 export const initialState = {
-  ufs: {
+  partials: {
     allUfs: ['br', 'rj'],
     byUf: {
       br: { name: 'Brasil', uf: 'BR', current: {}, history: [] },
