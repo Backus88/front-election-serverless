@@ -1,18 +1,18 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {  React } from 'react';
-import Home from './pages/Home';
-import Predict from './pages/Predict';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React from 'react'
+import Home from './pages/Home'
+import Predict from './pages/Predict'
+import { Provider } from './context/Provider'
 
-
-
-export default function App(){
-	
-	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<Home/>} />
-				<Route path="/predict" element={<Predict/>} />
-			</Routes>
-		</BrowserRouter>
-	);
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Provider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/predict" element={<Predict />} />
+        </Routes>
+      </Provider>
+    </BrowserRouter>
+  )
 }
