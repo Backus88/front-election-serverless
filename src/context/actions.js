@@ -1,5 +1,6 @@
 import { listElectionPartials } from '../graphql/queries'
 import { API } from 'aws-amplify'
+import { onChangeElectionPartial } from '../graphql/subscriptions'
 
 export const actions = {
   INITIAL_FETCH: 'INITIAL_FETCH',
@@ -16,6 +17,15 @@ export const initialFetch = async () => {
   return { type: actions.INITIAL_FETCH, payload: { items: response?.data?.listElectionPartials?.items } }
 }
 
-// export const addPartial = () => {
-//   dispatch({ type: actions.ADD_PARTIAL })
-// }
+export const addPartial = (dispatch) => {
+  return API.graphql({
+    query: onChangeElectionPartial,
+  }).subscribe({
+    next: ({ provider, value }) => {
+      const payload = value.data.onChangeElectionPartial
+      console.log('onChangeElectionPartial', payload)
+      dispatch({ type: actions.ADD_PARTIAL, payload })
+    },
+    error: (error) => console.warn('error', error),
+  })
+}
