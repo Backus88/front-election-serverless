@@ -15,8 +15,8 @@ export default function Home() {
       <Header />
       <MainContainer>
         <Title />
-        <CardHome title={'Prediction 1'} />
-        <CardHome title={'Prediction 2'} />
+        <CardHome title={'Previsão(Total Apurado:%)'}  type ={'predict'}/>
+        <CardHome title={'Regressão'} type = {'regression'} />
         <CardHome title={'Parcial'} />
       </MainContainer>
     </>
