@@ -21,3 +21,7 @@ export const CardStyle = styled.div `
         padding-bottom: 10px;
     }
 `;
+
+export const RegressionCard = styled(CardStyle)`
+    height: 100%;
+`; 

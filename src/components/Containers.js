@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const MainContainer = styled.div`
     height: 100vh;
     width: 100%;
-    background-color: #0FBFFF;
+    background-color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,4 +49,7 @@ export const CarouselContainer = styled.div`
     ::-webkit-scrollbar{
         display: none;
     }
+`;
+export const RegressionContainer = styled.div `
+
 `;
