@@ -3,7 +3,7 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-type ElectionPartial @model {
+type ElectionPartial @model(subscriptions: null) {
   id: ID!
   uf: String!
   updateTime: AWSDateTime!
@@ -12,4 +12,9 @@ type ElectionPartial @model {
   votesProportion: Float!
   bolsonaro: Float!
   lula: Float!
+}
+
+type Subscription {
+  onChangeElectionPartial(uf: String): ElectionPartial
+    @aws_subscribe(mutations: ["createElectionPartial", "updateElectionPartial"])
 }
