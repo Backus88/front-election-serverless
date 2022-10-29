@@ -52,6 +52,7 @@ export default function CardHome({ title, icon, type }) {
       {!type && (
         <Card.Content extra style={styleFoot}>
           {`${votesProportionPercent}% de apuração`}
+          <span style={{ float: 'right' }}>{`${partials.byUf.BR.current.votesCount} votos`}</span>
         </Card.Content>
       )}
       <Progress percent={votesProportionPercent} attached="bottom" />
