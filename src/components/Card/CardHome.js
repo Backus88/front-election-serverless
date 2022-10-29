@@ -1,20 +1,24 @@
-import { HorizontalBar } from './BarChart'
-import { RowDiv, ColumnDiv } from '../Containers'
-import { CardStyle } from './CardStyle'
-import { CandidateProfile } from './CandidateProfile'
-import { React } from 'react'
+import { React, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { IoOpenOutline } from 'react-icons/io5'
 import styled from 'styled-components'
-import CardBarChart from './CardBarChart'
 import { Card, Feed, Icon, Image, Progress, Grid, Header } from 'semantic-ui-react'
+import { ElectionContext } from '../../context/Provider'
+
+const partialCardHeight = '190px'
+const predictionCardHeight = '150px'
 
 export default function CardHome({ title, icon, type }) {
   const navigate = useNavigate()
+  const { partials } = useContext(ElectionContext)
+
+  const votesProportionPercent = partials.byUf.BR.current.votesProportion * 100 || 0
+  const lulaPercent = partials.byUf.BR.current.lula * 100
+  const bolsonaroPercent = partials.byUf.BR.current.bolsonaro * 100
+
   return (
-    <Card onClick={()=> navigate(`${type}`)} style={styleCard} >
-      <Card.Content >
-        <Grid style ={styleTitle}>
+    <CardStyled onClick={() => navigate(`${type}`)} h={type ? predictionCardHeight : partialCardHeight}>
+      <Card.Content>
+        <Grid style={styleTitle}>
           <Grid.Column floated="left" width={13}>
             <Header as="h5" icon={icon} content={title} />
           </Grid.Column>
@@ -32,7 +36,7 @@ export default function CardHome({ title, icon, type }) {
             ></Image>
             <Feed.Content>
               <Feed.Date content="Luiz Inácio Lula da Silva" />
-              <Progress percent={44} progress active size="small" color="red" />
+              <Progress percent={lulaPercent} progress active size="small" color="red" />
             </Feed.Content>
           </Feed.Event>
 
@@ -40,72 +44,35 @@ export default function CardHome({ title, icon, type }) {
             <Image src="https://static.poder360.com.br/2019/01/foto-oficial-Bolsonaro.png" avatar></Image>
             <Feed.Content>
               <Feed.Date content="Jair Messias Bolsonaro" />
-              <Progress percent={56} progress active size="small" color="blue" />
+              <Progress percent={bolsonaroPercent} progress active size="small" color="blue" />
             </Feed.Content>
           </Feed.Event>
         </Feed>
       </Card.Content>
-      <Card.Content extra style ={styleFoot}>33% de apuração</Card.Content>
-      <Progress percent={33} attached="bottom" />
-    </Card>
+      {!type && (
+        <Card.Content extra style={styleFoot}>
+          {`${votesProportionPercent}% de apuração`}
+        </Card.Content>
+      )}
+      <Progress percent={votesProportionPercent} attached="bottom" />
+    </CardStyled>
   )
-
-  //   return (
-  //     <CardStyle role={'button'} onClick={() => navigate(`/${type}`)}>
-  //       <Icon size={20} />
-  //       <h1>{title}</h1>
-  //       <RowDiv>
-  //         <ColumnDiv>
-  //           <h3>Nome:</h3>
-  //           <h3>Votos%:</h3>
-  //           <div style={{ width: '250px', height: '20px' }}>
-  //             <CardBarChart color={'#e4142c'} />
-  //           </div>
-  //         </ColumnDiv>
-  //       </RowDiv>
-  //       <RowDiv>
-  //         <ColumnDiv>
-  //           <h3>Nome:</h3>
-  //           <h3>Votos%:</h3>
-  //           <div style={{ width: '250px', height: '20px' }}>
-  //             <CardBarChart color={'#2a3591'} />
-  //           </div>
-  //         </ColumnDiv>
-  //       </RowDiv>
-  //     </CardStyle>
-  //   )
 }
 
-// const Icon = styled(IoOpenOutline)`
-//   position: absolute;
-//   top: 3px;
-//   right: 3px;
-//   fill: 'black';
-// `
-
-const CardContent = styled(Card.Content)`
-  display: flex;
-  align-items: center;
-`;
-
-const CardStyleD = styled(Card)`
-  height: 160px;
-`;
+const CardStyled = styled(Card)`
+  height: ${(props) => props.h};
+`
 
 const styleBody = {
-  height:'70px'
+  height: '70px',
 }
 
 const styleTitle = {
-  height:'30px'
-}
-
-const styleCard = {
-  height: '190px',
+  height: '30px',
 }
 
 const styleFoot = {
-  height:'30px',
-  padding:'3px',
-  'verticalAlign': 'middle'
+  height: '30px',
+  padding: '3px',
+  verticalAlign: 'middle',
 }

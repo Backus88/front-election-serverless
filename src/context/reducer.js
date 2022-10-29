@@ -1,6 +1,7 @@
 import { actions } from './actions'
+import { initialState } from './initialState'
 
-export function reducer(state, action) {
+export function reducer(state = initialState, action) {
   console.log('action', action)
   switch (action.type) {
     case actions.INITIAL_FETCH:
@@ -17,11 +18,23 @@ export function reducer(state, action) {
                 history: prev[current.uf] ? prev[current.uf].history.concat([current]) : [current],
               },
             }
-          }, {}),
+          }, state.partials.byUf),
         },
       }
     case actions.ADD_PARTIAL:
-      return { ...state, byUf: { ...state.byUf, [action.payload.uf]: action.payload } }
+      return {
+        ...state,
+        partials: {
+          byUf: {
+            ...state.partials.byUf,
+            [action.payload.uf]: {
+              ...state.partials.byUf[action.payload.uf],
+              current: action.payload,
+              history: state.partials.byUf[action.payload.uf].history.concat(action.payload),
+            },
+          },
+        },
+      }
     default:
       return state
   }
