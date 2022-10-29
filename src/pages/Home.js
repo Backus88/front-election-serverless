@@ -14,7 +14,6 @@ export default function Home() {
     <>
       <Header />
       <MainContainer>
-        <Title />
         <CardHome title={'Previsão(Total Apurado:%)'} type={'predict'} icon="chart bar" />
         <CardHome title={'Regressão'} type={'regression'} icon="chart line" />
         <CardHome title={'Parcial de momento'} icon="time" />

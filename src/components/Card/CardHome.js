@@ -9,12 +9,12 @@ import styled from 'styled-components'
 import CardBarChart from './CardBarChart'
 import { Card, Feed, Icon, Image, Progress, Grid, Header } from 'semantic-ui-react'
 
-export default function CardHome({ title, icon }) {
+export default function CardHome({ title, icon, type }) {
   const navigate = useNavigate()
   return (
-    <Card>
-      <Card.Content>
-        <Grid>
+    <Card onClick={()=> navigate(`${type}`)} style={styleCard} >
+      <Card.Content >
+        <Grid style ={styleTitle}>
           <Grid.Column floated="left" width={13}>
             <Header as="h5" icon={icon} content={title} />
           </Grid.Column>
@@ -24,7 +24,7 @@ export default function CardHome({ title, icon }) {
         </Grid>
       </Card.Content>
       <Card.Content>
-        <Feed style={{ marginTop: '15px' }}>
+        <Feed style={styleBody}>
           <Feed.Event>
             <Image
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuYqnT5mVWes2tdBm5hlBMrPQj8-aT3YLjfJi-oudD&s"
@@ -45,7 +45,7 @@ export default function CardHome({ title, icon }) {
           </Feed.Event>
         </Feed>
       </Card.Content>
-      <Card.Content extra>33% de apuração</Card.Content>
+      <Card.Content extra style ={styleFoot}>33% de apuração</Card.Content>
       <Progress percent={33} attached="bottom" />
     </Card>
   )
@@ -82,3 +82,30 @@ export default function CardHome({ title, icon }) {
 //   right: 3px;
 //   fill: 'black';
 // `
+
+const CardContent = styled(Card.Content)`
+  display: flex;
+  align-items: center;
+`;
+
+const CardStyleD = styled(Card)`
+  height: 160px;
+`;
+
+const styleBody = {
+  height:'70px'
+}
+
+const styleTitle = {
+  height:'30px'
+}
+
+const styleCard = {
+  height: '190px',
+}
+
+const styleFoot = {
+  height:'30px',
+  padding:'3px',
+  'verticalAlign': 'middle'
+}

@@ -29,3 +29,7 @@ export const CardStyle = styled.div `
 export const RegressionCard = styled(CardStyle)`
     height: 100%;
 `; 
+
+export const InfoCard = styled.div`
+    
+`;

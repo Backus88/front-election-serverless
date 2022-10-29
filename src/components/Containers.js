@@ -60,6 +60,7 @@ export const CarouselContainer = styled.div`
         display: none;
     }
 `;
-export const RegressionContainer = styled.div `
-
+export const RegressionContainer = styled(MainContainer) `
+    background-color: #FFFFFF;
+    margin-left: 10px;
 `;
