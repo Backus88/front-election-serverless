@@ -13,11 +13,14 @@ export const HorizontalBar = styled.div `
     width : ${(props)=> props.width}px;
     background-color:${(props)=> props.backColor} ;
     border-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     h4{
         font-family: 'Open Sans';
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 500;
-        align-self: center;
+        color: white;
     }
 `;
 

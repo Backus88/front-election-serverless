@@ -11,4 +11,5 @@ export const CandidateProfile = styled.div `
         display: block;
         padding-bottom: 100%;
     }
+    margin: 0 5px;
 `;

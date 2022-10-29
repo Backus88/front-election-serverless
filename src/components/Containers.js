@@ -34,33 +34,67 @@ export const RowDiv = styled.div`
     justify-content: center;
     padding-left: 0;
     margin-left: 0;
-    margin-bottom: 20px;
 `;
 
 export const ColumnDiv = styled.div`
     display: flex;
-    height: 100%;
+    height: 110px;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    margin-left: 10px;
+    padding: 10px 15px;
     h3{
-        font-size: 14px;
-        font-family: 'Robot', serif;
-        color: #000000;
+        font-size: 12px;
+        font-family: 'Open Sans';
+        font-weight: 400;
+        color: grey;
         padding: 0;
-        margin: 0;
+        margin:0 ;
+        margin-bottom: 3px;
     }
 `;
 
 export const CarouselContainer = styled.div`
-    height: 70%;
+    height: 85%;
     overflow-y: scroll;
     ::-webkit-scrollbar{
         display: none;
     }
+    margin-top: 10px;
 `;
 export const RegressionContainer = styled(MainContainer) `
     background-color: #FFFFFF;
     margin-left: 10px;
 `;
+
+export const CardHeader = styled.div`
+    width: 100%;
+    height: 40px;
+    border-bottom: 0.5px solid lightgray;
+    padding: 0px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 15px;
+    align-items: center;
+    h2{
+        font-size: 15px;
+        font-family: 'Open Sans';
+        font-weight: 400;
+        color: grey;
+        margin: 0;
+        margin-left: 30px;
+        padding-bottom: 0px;
+    }
+`;
+
+export const CardFooter = styled.div`
+    width: 100%;
+    height: 40px;
+    border-top: 0.5px solid lightgrey;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
