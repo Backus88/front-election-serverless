@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const MainContainer = styled.div`
   height: 100vh;
+  padding-top: 65px;
   width: 100%;
   background-color: #ffffff;
   display: flex;
@@ -61,7 +62,7 @@ export const CarouselContainer = styled.div`
   ::-webkit-scrollbar {
     display: none;
   }
-  margin-top: 10px;
+  margin-bottom: 60px;
 `
 export const RegressionContainer = styled(MainContainer)`
   background-color: #ffffff;

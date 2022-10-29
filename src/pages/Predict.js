@@ -13,8 +13,7 @@ export default function Predict() {
   return (
     <>
       <Header />
-      <MainContainer>
-        
+      <MainContainer> 
         <CarouselContainer>
           {ufData.map((item, index) => {
             return <CardPrediction title={item} key={index} />
