@@ -34,24 +34,25 @@ function regressor(x,y){
 }
 
 export function dataCreation(history){
-    bolsoData = history.map((item)=> {
+    const bolsoData = history.map((item)=> {
      return item.bolsonaro    
     });
-    lulaData = history.map((item)=>{
+    const lulaData = history.map((item)=>{
         return item.lula
     })
-    votesProportion = history.map((item)=>{
+    const votesProportion = history.map((item)=>{
         return item.votesProportion*100
     })
 
-    bolsoEquation = regressor(bolsoData, votesProportion);
-    lulaEquation = regressor(lulaData, votesProportion);
+    const bolsoEquation = regressor(votesProportion,bolsoData);
+    const lulaEquation = regressor(votesProportion,lulaData);
 
     const filledData = history.map((item)=>{
         return({
             name: `${item.votesProportion*100}%`,
+            number: item.votesProportion,
             lula: item.lula,
-            bolso: item.bolso,
+            bolso: item.bolsonaro,
             lulaPred: null,
             bolsoPre: null,
             amt:2400
@@ -67,13 +68,18 @@ export function dataCreation(history){
             lula: null,
             bolso: null,
             lulaPred: (lulaEquation.angular*index) + lulaEquation.linear,
-            bolsoPre: (bolsoEquation.angular*index)+ bolsoEquation.linear,
+            bolsoPred: (bolsoEquation.angular*index)+ bolsoEquation.linear,
             amt:2400
         }
         predictData.push(data);
     }
-
-   const filteredPredict = predictData.filter((item)=> item.number> history[history.length -1].votesProportion*100)
+   const sortedData = filledData.sort((a,b)=>{
+    return a.number - b.number;
+   })
+   console.log(sortedData)
+   const filteredPredict = predictData.filter((item)=> item.number> filledData[filledData.length -1]?.votesProportion*100)
+   filteredPredict[0].lula = filteredPredict[0].lulaPred;
+   filteredPredict[0].bolso = filteredPredict[0].bolsoPred;
    return filledData.concat(filteredPredict)
 }
 

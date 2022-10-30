@@ -1,4 +1,4 @@
-import React, {PureComponent, useContext} from 'react';
+import React, {PureComponent, useContext, useState} from 'react';
 import { ElectionContext } from '../context/Provider';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { MainContainer, RegressionContainer } from '../components/Containers';
@@ -7,6 +7,7 @@ import Title from '../components/Title';
 import { regressionData } from '../mock/regressionData';
 import styled from 'styled-components';
 import CardRegression from '../components/Card/CardRegression';
+import { dataCreation } from '../utils/regressor';
 
 export default function Regression() {
   const {partials}= useContext(ElectionContext)
@@ -14,98 +15,15 @@ export default function Regression() {
   const lulaPercent = partials.byUf.BR.current.lula *100|| 0
   const bolsoPercent = partials.byUf.BR.current.bolsonaro *100|| 0
   const updateTime = partials.byUf.BR.current.updateTime || '00:00'
+  console.log("react", partials?.byUf?.BR?.history)
 
-    const data = [
-        {
-            name: '13:00',
-            lula: 51,
-            bolso: 49,
-            lulaPred: null,
-            bolsoPred:null,
-            amt: 2400,
-        },
+  let newData =[];
+  if(partials?.byUf?.BR?.history.length !== 0){
+    newData = dataCreation(partials?.byUf?.[partials.regFilter|| 'BR'].history)
+  }
+  
+  
 
-        {
-            name: '14:00',
-            lula: 51,
-            bolso: 49,
-            lulaPred: null,
-            bolsoPred:null,
-            amt: 2400,
-        },
-        {
-            name: '15:00',
-            lula: 51,
-            bolso: 49,
-            lulaPred: null,
-            bolsoPred:null,
-            amt: 2400,
-        },
-        {
-            name: '16:00',
-            lula: 45,
-            bolso: 55,
-            lulaPred: null,
-            bolsoPred:null,
-            amt: 2210,
-        },
-        {
-            name: '17:00',
-            lula: 48,
-            bolso: 52,
-            lulaPred: 48,
-            bolsoPred:52,
-            amt: 2290,
-        },
-        {
-            name: '18:00',
-            lula: null,
-            bolso: null,
-            lulaPred: 49,
-            bolsoPred: 51,
-            amt: 2290,
-        },
-        {
-            name: '19:00',
-            lula: null,
-            bolso: null,
-            lulaPred: 48.5,
-            bolsoPred: 51.5,
-            amt: 2290,
-        },
-        {
-          name: '19:00',
-          lula: null,
-          bolso: null,
-          lulaPred: 48.5,
-          bolsoPred: 51.5,
-          amt: 2290,
-      },
-        {
-          name: '20:00',
-          lula: null,
-          bolso: null,
-          lulaPred: 48.5,
-          bolsoPred: 51.5,
-          amt: 2290,
-        },
-        {
-          name: '21:00',
-          lula: null,
-          bolso: null,
-          lulaPred: 48.5,
-          bolsoPred: 51.5,
-          amt: 2290,
-        },
-        {
-          name: '22:00',
-          lula: null,
-          bolso: null,
-          lulaPred: 48.5,
-          bolsoPred: 51.5,
-          amt: 2290,
-        }
-    ];
 
     class CustomizedLabel extends PureComponent {
         render() {
@@ -149,7 +67,7 @@ export default function Regression() {
                       <LineChart
                           width={390}
                           height={500}
-                          data={data}
+                          data={newData}
                           margin={{
                               top: 5,
                               right: 45,
@@ -159,33 +77,29 @@ export default function Regression() {
                       >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="name" height={50} tick={<CustomizedAxisTick />} />
-                          <YAxis domain={[0, 80]} />
+                          <YAxis domain={[0, 0.8]} />
                           <Tooltip />
                           <Legend payload={[{value:'lula', type:'diamond', color:'red'},{value:'bolso', type:'diamond', color: 'blue'}]}/>
                           <Line
                               type="monotone"
                               dataKey="lula"
                               stroke="red"
-                              label={<CustomizedLabel />}
                           />
                           <Line 
                               type="monotone" 
                               dataKey="bolso" 
-                              stroke="blue" 
-                              label={<CustomizedLabel />} />
+                              stroke="blue"  />
                           <Line
                               type="monotone"
                               dataKey="lulaPred"
                               stroke="red"
                               strokeDasharray="3 4 5 2"
-                              label={<CustomizedLabel />}
                           />
                           <Line 
                               type="monotone" 
                               dataKey="bolsoPred" 
                               stroke="blue" 
-                              strokeDasharray="3 4 5 2"
-                              label={<CustomizedLabel />} />
+                              strokeDasharray="3 4 5 2" />
                       </LineChart>
                   </ResponsiveContainer>
               </RegressionContainer>
