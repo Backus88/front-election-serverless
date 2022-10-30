@@ -9,6 +9,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         partials: {
+          ...state.partials,
           byUf: action.payload.items.reduce((prev, current) => {
             return {
               ...prev,
