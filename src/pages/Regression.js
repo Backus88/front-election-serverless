@@ -13,6 +13,7 @@ export default function Regression() {
   const votedCount = partials.byUf.BR.current.votesProportion;
   const lulaPercent = partials.byUf.BR.current.lula *100|| 0
   const bolsoPercent = partials.byUf.BR.current.bolsonaro *100|| 0
+  const updateTime = partials.byUf.BR.current.updateTime || '00:00'
 
     const data = [
         {
@@ -79,7 +80,7 @@ export default function Regression() {
           const { x, y, stroke, value } = this.props;
       
           return (
-            <text x={x} y={y} dy={-4} fill={stroke} fontSize={13} textAnchor="middle">
+            <text x={x} y={y} dy={-4} fill={stroke} fontSize={14} textAnchor="middle">
               {value}
             </text>
           );
@@ -109,7 +110,8 @@ export default function Regression() {
                 title={'BR'} 
                 percentVoted={votedCount*100}
                 lulaPercent={lulaPercent}
-                bolsoPercent={bolsoPercent}/>
+                bolsoPercent={bolsoPercent}
+                updateTime={updateTime}/>
               <RegressionContainer>
                   <ResponsiveContainer width="100%" height="88%">
                       <LineChart

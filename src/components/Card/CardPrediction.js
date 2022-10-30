@@ -11,14 +11,18 @@ export default function CardPrediction({
 	lulaPercent, 
 	bolsonaroPercent,
 	percentVoted, 
-	countedVotes}){
+	countedVotes,
+	updatedTime}){
+	
+	const time = updatedTime?.slice(11,16)
+	console.log(updatedTime)
 
 	return(
 		<CardStyle>
 			<CardHeader>
 				<h1>{title}</h1>
 				{percentVoted?
-					<h2>Votos Apurados:<b> {percentVoted}%</b> </h2>
+					<h2>Votos Apurados:<b> {percentVoted*100}%</b> </h2>
 				:
 					<h2>Votos Apurados: 30%</h2>
 				}
@@ -29,10 +33,23 @@ export default function CardPrediction({
 				:
 					<h3>Quantidade de Votos Apurados: xxx.xxx</h3>
 				}
-				<h3>Quantidade de Votos Válidos: xxx.xxx</h3>
-				<h3>Quantidade de Brancos ou Nulos: xxx.xxx</h3>
-				<h3>Luiz Inácio Lula da Silva: xxx.xxx votos</h3>
-				<h3>Jair Messias Bolsonaro: xxx.xxx votos</h3>
+				{lulaPercent&&bolsonaroPercent&&countedVotes?
+					<>
+						<h3>Lula: <b>{(lulaPercent*countedVotes)/percentVoted} votos previstos</b></h3>
+						<h3>Bolsonaro: <b>{(bolsonaroPercent*countedVotes/percentVoted)} votos previstos</b></h3>
+					</>
+
+				:
+					<>
+						<h3>Lula: <b>xxx.xxx votos previstos</b></h3>
+						<h3>Bolsonaro: <b>xxx.xxx votos previstos</b></h3>
+					</>
+				}
+				{updatedTime?
+					<h3>Última atualição: <b>{time} </b> </h3>
+				:
+					<h3>Última atualição: <b>00:00 </b> </h3>
+				}
 			</ColumnDiv>
 			<CardFooter>
 				<RowDiv>
