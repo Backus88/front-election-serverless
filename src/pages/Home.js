@@ -2,7 +2,6 @@ import { React } from 'react'
 import CardHome from '../components/Card/CardHome'
 import { MainContainer } from '../components/Containers'
 import Header from '../components/Header/Header'
-import Title from '../components/Title'
 import { useContext } from 'react'
 import { ElectionContext } from '../context/Provider'
 
