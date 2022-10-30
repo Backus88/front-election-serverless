@@ -60,6 +60,7 @@ export const initialState = {
       SE: { name: 'Sergipe', uf: 'SE', current: {}, history: [] },
       TO: { name: 'Tocantins', uf: 'TO', current: {}, history: [] },
     },
-    filter: [],
+    predFilter: [],
+    regFilter: '',
   },
 }

@@ -8,7 +8,7 @@ import extrapolador from '../utils/extrapolador'
 
 export default function Predict() {
   const { partials } = useContext(ElectionContext)
-  const listItems = partials.filter.length > 0 ? ['BR', ...partials.filter] : partials.allUfs
+  const listItems = partials.predFilter.length > 0 ? ['BR', ...partials.predFilter] : partials.allUfs
 
   return (
     <>

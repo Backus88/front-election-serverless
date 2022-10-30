@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Dropdown } from 'semantic-ui-react'
 import { ElectionContext } from '../../context/Provider'
 
-function DropdownFilterUF() {
-  const { partials, setFilter } = useContext(ElectionContext)
+function DropdownFilterUF({ nav }) {
+  const { partials, setPredFilter, setRegFilter } = useContext(ElectionContext)
   const options = partials.allUfs
     .filter((e) => e !== 'BR')
     .map((uf) => {
@@ -13,16 +13,22 @@ function DropdownFilterUF() {
         text: partials.byUf[uf].name,
       }
     })
+
+  useEffect(() => {
+    setRegFilter('')
+    setPredFilter([])
+  }, [nav])
+
   return (
     <Dropdown
       clearable
-      multiple
+      multiple={nav === 'predict'}
       search
       selection
       options={options}
       placeholder="Filtrar por Estados"
       onChange={(a, b) => {
-        setFilter(b.value)
+        nav === 'predict' ? setPredFilter(b.value) : setRegFilter(b.value)
       }}
       style={{ bottom: '5px' }}
     ></Dropdown>

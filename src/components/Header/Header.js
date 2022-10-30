@@ -19,7 +19,9 @@ export default function Header() {
             <Title updateTime />
           </Grid.Column>
           <Grid.Column width={6} textAlign="center">
-            {route !== '/' ? <DropdownFilterUF /> : <Title updateTime={false} />}
+            {route === '/' && <Title updateTime={false} />}
+            {route === '/predict' && <DropdownFilterUF nav="predict" />}
+            {route === '/regression' && <DropdownFilterUF nav="regression" />}
           </Grid.Column>
           <Grid.Column width={5} onClick={() => navigate(`/`)} style={{ cursor: 'pointer' }}>
             <FaHome size={25} style={{ float: 'right' }} />
@@ -30,7 +32,9 @@ export default function Header() {
       <MobileView>
         <HeaderStyle columns={3} padded width={16}>
           <Grid.Column width={14} textAlign="left">
-            {route !== '/' ? <DropdownFilterUF /> : <Title updateTime={false} />}
+            {route === '/' && <Title updateTime={false} />}
+            {route === '/predict' && <DropdownFilterUF nav="predict" />}
+            {route === '/regression' && <DropdownFilterUF nav="regression" />}
           </Grid.Column>
           <Grid.Column width={2} style={{ cursor: 'pointer' }}>
             <FaHome size={25} style={{ float: 'right' }} onClick={() => navigate(`/`)} />

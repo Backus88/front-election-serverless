@@ -16,8 +16,11 @@ export const Provider = ({ children }) => {
 
   const value = {
     ...state,
-    setFilter: (payload) => {
-      dispatch({ type: actions.SET_FILTER, payload })
+    setPredFilter: (payload) => {
+      dispatch({ type: actions.SET_PRED_FILTER, payload })
+    },
+    setRegFilter: (payload) => {
+      dispatch({ type: actions.SET_REG_FILTER, payload })
     },
   }
 

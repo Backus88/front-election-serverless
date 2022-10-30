@@ -5,7 +5,8 @@ import { onChangeElectionPartial } from '../graphql/subscriptions'
 export const actions = {
   INITIAL_FETCH: 'INITIAL_FETCH',
   ADD_PARTIAL: 'ADD_PARTIAL',
-  SET_FILTER: 'SET_FILTER',
+  SET_PRED_FILTER: 'SET_PRED_FILTER',
+  ET_REG_FILTER: 'SET_REG_FILTER',
 }
 
 export const initialFetch = async () => {
