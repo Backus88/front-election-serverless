@@ -15,7 +15,7 @@ export default function Home() {
     <>
       <Header />
       <MainContainer>
-        <CardHome title={'Parcial de momento'} icon="time" />
+        <CardHome title={'Parcial de momento'} icon="time" type={'parcial'} />
         <CardHome title={'Previsão 1 (Extrapolação)'} type={'predict'} icon="chart bar" />
         <CardHome title={'Previsão 2 (Regressão)'} type={'regression'} icon="chart line" />
       </MainContainer>

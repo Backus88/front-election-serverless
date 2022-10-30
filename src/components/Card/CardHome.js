@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card, Feed, Icon, Image, Progress, Grid, Header } from 'semantic-ui-react'
 import { ElectionContext } from '../../context/Provider'
+import extrapolador from '../../utils/extrapolador'
 
 const partialCardHeight = '190px'
 const predictionCardHeight = '150px'
@@ -12,8 +13,10 @@ export default function CardHome({ title, icon, type }) {
   const { partials } = useContext(ElectionContext)
 
   const votesProportionPercent = partials.byUf.BR.current.votesProportion * 100 || 0
-  const lulaPercent = partials.byUf.BR.current.lula * 100
-  const bolsonaroPercent = partials.byUf.BR.current.bolsonaro * 100
+  const lulaParcial = partials.byUf.BR.current.lula * 100
+  const bolsonaroParcial = partials.byUf.BR.current.bolsonaro * 100
+  console.log(extrapolador(partials))
+  const {lulaPercent,bolsonaroPercent} = extrapolador(partials)
 
   return (
     <CardStyled onClick={() => navigate(`${type}`)} h={type ? predictionCardHeight : partialCardHeight}>
@@ -36,7 +39,11 @@ export default function CardHome({ title, icon, type }) {
             ></Image>
             <Feed.Content>
               <Feed.Date content="Luiz Inácio Lula da Silva" />
-              <Progress percent={lulaPercent} progress active size="small" color="red" />
+              {type === 'parcial'?
+                <Progress percent={lulaParcial} progress active size="small" color="red" />
+                :
+                <Progress percent={lulaPercent} progress active size="small" color="red" />
+              }
             </Feed.Content>
           </Feed.Event>
 
@@ -44,7 +51,11 @@ export default function CardHome({ title, icon, type }) {
             <Image src="https://static.poder360.com.br/2019/01/foto-oficial-Bolsonaro.png" avatar></Image>
             <Feed.Content>
               <Feed.Date content="Jair Messias Bolsonaro" />
-              <Progress percent={bolsonaroPercent} progress active size="small" color="blue" />
+              {type === 'parcial'?
+                <Progress percent={bolsonaroParcial} progress active size="small" color="blue" />
+                :
+                <Progress percent={bolsonaroPercent} progress active size="small" color="blue" />
+              }
             </Feed.Content>
           </Feed.Event>
         </Feed>
