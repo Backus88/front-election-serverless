@@ -26,6 +26,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         partials: {
+          ...state.partials,
           byUf: {
             ...state.partials.byUf,
             [action.payload.uf]: {
