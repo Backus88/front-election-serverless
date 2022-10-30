@@ -75,7 +75,7 @@ export function dataCreation(history){
     for (let index = 0; index <= 100; index+=5) {
         const data = {
             name: `${index}%`,
-            number: index,
+            number: index/100,
             lula: null,
             bolso: null,
             lulaPred: (lulaEquation.angular*index) + lulaEquation.linear,
@@ -87,9 +87,9 @@ export function dataCreation(history){
    const sortedData = filledData.sort((a,b)=>{
     return a.number - b.number;
    })
-   const filteredPredict = predictData.filter((item)=> item.number> sortedData[sortedData.length -1]?.number)
+   const filteredPredict = predictData.filter((item)=> item.number>= sortedData[sortedData.length -1]?.number)
    const end = filledData.concat(filteredPredict)
-   console.log('predicData', filteredPredict    )
+   console.log('predicData', sortedData )
    return end
 }
 
