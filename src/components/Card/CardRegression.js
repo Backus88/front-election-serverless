@@ -26,9 +26,9 @@ export default function CardRegression({title,percentVoted, lulaPercent, bolsoPe
                     <h4>Bolsonaro: xx%</h4>  
                 }
                 {updateTime?
-                    <h4>Última atualição:<b>{time}</b></h4>
+                    <h4>Última atualização:<b>{time}</b></h4>
                 :
-                    <h4>Última atualição:<b>00:00</b></h4>
+                    <h4>Última atualização:<b>00:00</b></h4>
                 }
             </ColumnDiv>
         </CardStyle>
