@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Card, Feed, Icon, Image, Progress, Grid, Header } from 'semantic-ui-react'
 import { ElectionContext } from '../../context/Provider'
 import extrapolador from '../../utils/extrapolador'
+import { round } from 'lodash'
 
 const partialCardHeight = '190px'
 const predictionCardHeight = '150px'
@@ -12,7 +13,7 @@ export default function CardHome({ title, icon, type }) {
   const navigate = useNavigate()
   const { partials } = useContext(ElectionContext)
 
-  const votesProportionPercent = partials.byUf.BR.current.votesProportion * 100 || 0
+  const votesProportionPercent = round(partials.byUf.BR.current.votesProportion, 2) * 100 || 0
   const lulaParcial = partials.byUf.BR.current.lula * 100
   const bolsonaroParcial = partials.byUf.BR.current.bolsonaro * 100
   //console.log(extrapolador(partials))
@@ -64,7 +65,7 @@ export default function CardHome({ title, icon, type }) {
       </Card.Content>
       {type === 'parcial' && (
         <Card.Content extra style={styleFoot}>
-          {`${votesProportionPercent}% de apuração`}
+          {`${round(votesProportionPercent)}% de apuração`}
           <span style={{ float: 'right' }}>{`${partials.byUf.BR.current.votesCount} votos`}</span>
         </Card.Content>
       )}
