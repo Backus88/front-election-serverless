@@ -3,6 +3,7 @@ import { RowDiv, CardHeader, CardFooter, ColumnDiv } from '../Containers'
 import { CardStyle } from './CardStyle'
 import { CandidateProfile } from './CandidateProfile'
 import { React } from 'react'
+import { round } from 'lodash'
 
 export default function CardPrediction({
   title,
@@ -33,10 +34,10 @@ export default function CardPrediction({
         {lulaPercent && bolsonaroPercent && countedVotes ? (
           <>
             <h3>
-              Lula: <b>{(lulaPercent * countedVotes) / percentVoted} votos previstos</b>
+              Lula: <b>{round((lulaPercent * countedVotes) / percentVoted)} votos previstos</b>
             </h3>
             <h3>
-              Bolsonaro: <b>{(bolsonaroPercent * countedVotes) / percentVoted} votos previstos</b>
+              Bolsonaro: <b>{round((bolsonaroPercent * countedVotes) / percentVoted)} votos previstos</b>
             </h3>
           </>
         ) : (
@@ -68,7 +69,7 @@ export default function CardPrediction({
           <DivBarChart>
             {lulaPercent ? (
               <HorizontalBarLula width={lulaPercent * 190} height={30} backColor={'#BB061C'}>
-                <h4>{lulaPercent * 100}%</h4>
+                <h4>{round(lulaPercent * 100, 2)}%</h4>
               </HorizontalBarLula>
             ) : (
               <HorizontalBarLula width={90} height={30} backColor={'#BB061C'}>
@@ -76,7 +77,7 @@ export default function CardPrediction({
               </HorizontalBarLula>
             )}
             {bolsonaroPercent ? (
-              <HorizontalBarBolso width={bolsonaroPercent * 190} height={30} backColor={'#3824DF'}>
+              <HorizontalBarBolso width={round(bolsonaroPercent * 190, 2)} height={30} backColor={'#3824DF'}>
                 <h4>{bolsonaroPercent * 100}%</h4>
               </HorizontalBarBolso>
             ) : (
