@@ -60,96 +60,20 @@ export function dataCreation(history){
 
     const predictData = [];
 
-    const data = [
-        {
-            name: '0%',
-            lula: 51,
-            bolso: 49,
-            lulaPred: null,
-            bolsoPred:null,
-            amt: 2400,
-        },
-
-        {
-            name: '10%',
-            lula: 51,
-            bolso: 49,
-            lulaPred: null,
-            bolsoPred:null,
-            amt: 2400,
-        },
-        {
-            name: '20%',
-            lula: 51,
-            bolso: 49,
-            lulaPred: null,
-            bolsoPred:null,
-            amt: 2400,
-        },
-        {
-            name: '30%',
-            lula: 45,
-            bolso: 55,
-            lulaPred: null,
-            bolsoPred:null,
-            amt: 2210,
-        },
-        {
-            name: '40%',
-            lula: 48,
-            bolso: 52,
-            lulaPred: 48,
-            bolsoPred:52,
-            amt: 2290,
-        },
-        {
-            name: '50%',
+    for (let index = 0; index < 100; index+=5) {
+        const data = {
+            name: `${index}%`,
+            number: index,
             lula: null,
             bolso: null,
-            lulaPred: 49,
-            bolsoPred: 51,
-            amt: 2290,
-        },
-        {
-            name: '60%',
-            lula: null,
-            bolso: null,
-            lulaPred: 48.5,
-            bolsoPred: 51.5,
-            amt: 2290,
-        },
-        {
-          name: '70%',
-          lula: null,
-          bolso: null,
-          lulaPred: 48.5,
-          bolsoPred: 51.5,
-          amt: 2290,
-      },
-        {
-          name: '80%',
-          lula: null,
-          bolso: null,
-          lulaPred: 48.5,
-          bolsoPred: 51.5,
-          amt: 2290,
-        },
-        {
-          name: '90%',
-          lula: null,
-          bolso: null,
-          lulaPred: 48.5,
-          bolsoPred: 51.5,
-          amt: 2290,
-        },
-        {
-          name: '100%',
-          lula: null,
-          bolso: null,
-          lulaPred: 48.5,
-          bolsoPred: 51.5,
-          amt: 2290,
+            lulaPred: (lulaEquation.angular*index) + lulaEquation.linear,
+            bolsoPre: (bolsoEquation.angular*index)+ bolsoEquation.linear,
+            amt:2400
         }
-    ];
+        predictData.push(data);
+    }
+
+   const filteredPredict = predictData.filter((item)=> item.number> history[history.length -1].votesProportion*100)
+   return filledData.concat(filteredPredict)
 }
 
