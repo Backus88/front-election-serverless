@@ -16,10 +16,10 @@ export default function CardHome({ title, icon, type }) {
   const lulaParcial = partials.byUf.BR.current.lula * 100
   const bolsonaroParcial = partials.byUf.BR.current.bolsonaro * 100
   console.log(extrapolador(partials))
-  const {lulaPercent,bolsonaroPercent} = extrapolador(partials)
+  const { lulaPercent, bolsonaroPercent } = extrapolador(partials)
 
   return (
-    <CardStyled onClick={() => navigate(`${type}`)} h={type ? predictionCardHeight : partialCardHeight}>
+    <CardStyled onClick={() => navigate(`${type}`)} h={type === 'parcial' ? partialCardHeight : predictionCardHeight}>
       <Card.Content>
         <Grid style={styleTitle}>
           <Grid.Column floated="left" width={13}>
@@ -39,11 +39,11 @@ export default function CardHome({ title, icon, type }) {
             ></Image>
             <Feed.Content>
               <Feed.Date content="Luiz Inácio Lula da Silva" />
-              {type === 'parcial'?
+              {type === 'parcial' ? (
                 <Progress percent={lulaParcial} progress active size="small" color="red" />
-                :
+              ) : (
                 <Progress percent={lulaPercent} progress active size="small" color="red" />
-              }
+              )}
             </Feed.Content>
           </Feed.Event>
 
@@ -51,16 +51,16 @@ export default function CardHome({ title, icon, type }) {
             <Image src="https://static.poder360.com.br/2019/01/foto-oficial-Bolsonaro.png" avatar></Image>
             <Feed.Content>
               <Feed.Date content="Jair Messias Bolsonaro" />
-              {type === 'parcial'?
+              {type === 'parcial' ? (
                 <Progress percent={bolsonaroParcial} progress active size="small" color="blue" />
-                :
+              ) : (
                 <Progress percent={bolsonaroPercent} progress active size="small" color="blue" />
-              }
+              )}
             </Feed.Content>
           </Feed.Event>
         </Feed>
       </Card.Content>
-      {type ==='parcial' && (
+      {type === 'parcial' && (
         <Card.Content extra style={styleFoot}>
           {`${votesProportionPercent}% de apuração`}
           <span style={{ float: 'right' }}>{`${partials.byUf.BR.current.votesCount} votos`}</span>
