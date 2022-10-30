@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card, Feed, Icon, Image, Progress, Grid, Header } from 'semantic-ui-react'
 import { ElectionContext } from '../../context/Provider'
-import 'semantic-ui-css/semantic.min.css'
 
 const partialCardHeight = '190px'
 const predictionCardHeight = '150px'
