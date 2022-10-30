@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { CardStyle } from './CardStyle';
 import {  RowDiv, CardHeader, CardFooter, ColumnDiv } from '../Containers';
 
-export default function CardRegression({title,percentVoted, lulaPercent, bolsoPercent}){
+export default function CardRegression({title,percentVoted, lulaPercent, bolsoPercent, updateTime}){
+    const time = updateTime?.slice(11,16)
     return(
         <CardStyle>
             <CardHeader>
@@ -23,6 +24,11 @@ export default function CardRegression({title,percentVoted, lulaPercent, bolsoPe
                     <h4>Bolsonaro: <b>{bolsoPercent}%</b></h4>
                 :
                     <h4>Bolsonaro: xx%</h4>  
+                }
+                {updateTime?
+                    <h4>Última atualição:<b>{time}</b></h4>
+                :
+                    <h4>Última atualição:<b>00:00</b></h4>
                 }
             </ColumnDiv>
         </CardStyle>
