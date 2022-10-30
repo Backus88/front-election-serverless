@@ -1,12 +1,18 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, useContext} from 'react';
+import { ElectionContext } from '../context/Provider';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { MainContainer, RegressionContainer } from '../components/Containers';
 import Header from '../components/Header/Header';
 import Title from '../components/Title';
 import { regressionData } from '../mock/regressionData';
 import styled from 'styled-components';
+import CardRegression from '../components/Card/CardRegression';
 
 export default function Regression() {
+  const {partials}= useContext(ElectionContext)
+  const votedCount = partials.byUf.BR.current.votesProportion;
+  const lulaPercent = partials.byUf.BR.current.lula *100|| 0
+  const bolsoPercent = partials.byUf.BR.current.bolsonaro *100|| 0
 
     const data = [
         {
@@ -99,8 +105,13 @@ export default function Regression() {
         <>
             <Header />
             <MainContainer>
+              <CardRegression 
+                title={'BR'} 
+                percentVoted={votedCount*100}
+                lulaPercent={lulaPercent}
+                bolsoPercent={bolsoPercent}/>
               <RegressionContainer>
-                  <ResponsiveContainer width="100%" height="60%">
+                  <ResponsiveContainer width="100%" height="88%">
                       <LineChart
                           width={390}
                           height={500}
@@ -113,7 +124,7 @@ export default function Regression() {
                           }}
                       >
                           <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="name" height={60} tick={<CustomizedAxisTick />} />
+                          <XAxis dataKey="name" height={50} tick={<CustomizedAxisTick />} />
                           <YAxis domain={[0, 80]} />
                           <Tooltip />
                           <Legend payload={[{value:'lula', type:'diamond', color:'red'},{value:'bolso', type:'diamond', color: 'blue'}]}/>

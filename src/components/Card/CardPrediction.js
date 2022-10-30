@@ -18,14 +18,14 @@ export default function CardPrediction({
 			<CardHeader>
 				<h1>{title}</h1>
 				{percentVoted?
-					<h2>Votos Apurados: {percentVoted}%</h2>
+					<h2>Votos Apurados:<b> {percentVoted}%</b> </h2>
 				:
 					<h2>Votos Apurados: 30%</h2>
 				}
 			</CardHeader>
 			<ColumnDiv>
 				{countedVotes?
-					<h3>Quantidade de Votos Apurados: {countedVotes}</h3>
+					<h3>Quantidade de Votos Apurados:<b> {countedVotes}</b> </h3>
 				:
 					<h3>Quantidade de Votos Apurados: xxx.xxx</h3>
 				}

@@ -54,6 +54,24 @@ export const ColumnDiv = styled.div`
     margin: 0;
     margin-bottom: 3px;
   }
+  h4{
+    font-size: 16px;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    color: grey;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3px;
+  }
+  h5{
+    font-size: 16px;
+    font-family: 'Open Sans';
+    font-weight: 700;
+    color: grey;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 3px;
+  }
 `
 
 export const CarouselContainer = styled.div`
@@ -66,6 +84,9 @@ export const CarouselContainer = styled.div`
 `
 export const RegressionContainer = styled(MainContainer)`
   background-color: #ffffff;
+  height: 700px;
+  margin: 0;
+  padding: 0;
   margin-left: 10px;
 `
 
