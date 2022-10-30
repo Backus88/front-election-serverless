@@ -76,10 +76,11 @@ export function dataCreation(history){
    const sortedData = filledData.sort((a,b)=>{
     return a.number - b.number;
    })
-   console.log(sortedData)
-   const filteredPredict = predictData.filter((item)=> item.number> filledData[filledData.length -1]?.votesProportion*100)
-   filteredPredict[0].lula = filteredPredict[0].lulaPred;
-   filteredPredict[0].bolso = filteredPredict[0].bolsoPred;
-   return filledData.concat(filteredPredict)
+   const filteredPredict = predictData.filter((item)=> item.number> sortedData[sortedData.length -1]?.number)
+    filteredPredict[0]?.lula = filteredPredict[0]?.lulaPred;
+    filteredPredict[0]?.bolso = filteredPredict[0]?.bolsoPred;
+   const end = filledData.concat(filteredPredict)
+   console.log('predicData', filteredPredict    )
+   return end
 }
 
