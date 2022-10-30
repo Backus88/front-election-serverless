@@ -25,9 +25,11 @@ export default function CardHome({ title, icon, type }) {
           <Grid.Column floated="left" width={13}>
             <Header as="h5" icon={icon} content={title} />
           </Grid.Column>
-          <Grid.Column floated="right" width={2}>
-            <Icon name="expand"></Icon>
-          </Grid.Column>
+          {type !== 'parcial' && (
+            <Grid.Column floated="right" width={2}>
+              <Icon name="expand"></Icon>
+            </Grid.Column>
+          )}
         </Grid>
       </Card.Content>
       <Card.Content>
