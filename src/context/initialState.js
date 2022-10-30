@@ -2,7 +2,6 @@ export const initialState = {
   partials: {
     allUfs: [
       'BR',
-      'RJ',
       'AC',
       'AL',
       'AP',
@@ -21,6 +20,7 @@ export const initialState = {
       'PR',
       'PE',
       'PI',
+      'RJ',
       'RN',
       'RS',
       'RO',
@@ -60,5 +60,6 @@ export const initialState = {
       SE: { name: 'Sergipe', uf: 'SE', current: {}, history: [] },
       TO: { name: 'Tocantins', uf: 'TO', current: {}, history: [] },
     },
+    filter: [],
   },
 }

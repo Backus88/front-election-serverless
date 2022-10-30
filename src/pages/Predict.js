@@ -7,38 +7,41 @@ import { ElectionContext } from '../context/Provider'
 import extrapolador from '../utils/extrapolador'
 
 export default function Predict() {
-  const {partials}= useContext(ElectionContext)
-
-
+  const { partials } = useContext(ElectionContext)
+  const listItems = partials.filter.length > 0 ? ['BR', ...partials.filter] : partials.allUfs
 
   return (
     <>
       <Header />
-      <MainContainer> 
+      <MainContainer>
         <CarouselContainer>
-          {Object.values(partials.byUf).map((item, index) => {
-            console.log(item.current.updateTime)
-            if(item.uf === 'BR'){
-              const{lulaPercent, bolsonaroPercent} = extrapolador(partials)
-              return <CardPrediction 
-              title={item.uf} 
-              key={index} 
-              lulaPercent= {lulaPercent/100} 
-              bolsonaroPercent = {bolsonaroPercent/100} 
-              percentVoted = {item.current.votesProportion}
-              countedVotes = {item.current.votesCount}
-              updatedTime = {item.current.updateTime}
-              />
+          {listItems.map((uf, index) => {
+            const item = partials.byUf[uf]
+            if (item.uf === 'BR') {
+              const { lulaPercent, bolsonaroPercent } = extrapolador(partials)
+              return (
+                <CardPrediction
+                  title={item.name}
+                  key={index}
+                  lulaPercent={lulaPercent / 100}
+                  bolsonaroPercent={bolsonaroPercent / 100}
+                  percentVoted={item.current.votesProportion}
+                  countedVotes={item.current.votesCount}
+                  updatedTime={item.current.updateTime}
+                />
+              )
             }
-            return <CardPrediction 
-              title={item.uf} 
-              key={index} 
-              lulaPercent= {item.current.lula} 
-              bolsonaroPercent = {item.current.bolsonaro} 
-              percentVoted = {item.current.votesProportion}
-              countedVotes = {item.current.votesCount}
-              updatedTime = {item.current.updateTime}
+            return (
+              <CardPrediction
+                title={item.name}
+                key={index}
+                lulaPercent={item.current.lula}
+                bolsonaroPercent={item.current.bolsonaro}
+                percentVoted={item.current.votesProportion}
+                countedVotes={item.current.votesCount}
+                updatedTime={item.current.updateTime}
               />
+            )
           })}
         </CarouselContainer>
       </MainContainer>

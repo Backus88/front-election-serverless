@@ -8,7 +8,7 @@ import { ElectionContext } from '../context/Provider'
 export default function Home() {
   const state = useContext(ElectionContext)
 
-  console.log('stateHome', state.partials)
+  // console.log('stateHome', state.partials)
 
   return (
     <>

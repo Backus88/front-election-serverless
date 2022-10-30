@@ -36,6 +36,14 @@ export function reducer(state = initialState, action) {
           },
         },
       }
+    case actions.SET_FILTER:
+      return {
+        ...state,
+        partials: {
+          ...state.partials,
+          filter: action.payload,
+        },
+      }
     default:
       return state
   }

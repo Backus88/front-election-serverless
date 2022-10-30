@@ -14,7 +14,12 @@ export const Provider = ({ children }) => {
     addPartial(dispatch)
   }, [dispatch])
 
-  const value = { ...state }
+  const value = {
+    ...state,
+    setFilter: (payload) => {
+      dispatch({ type: actions.SET_FILTER, payload })
+    },
+  }
 
   return <ElectionContext.Provider value={value}>{children}</ElectionContext.Provider>
 }

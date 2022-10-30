@@ -15,7 +15,7 @@ export default function CardHome({ title, icon, type }) {
   const votesProportionPercent = partials.byUf.BR.current.votesProportion * 100 || 0
   const lulaParcial = partials.byUf.BR.current.lula * 100
   const bolsonaroParcial = partials.byUf.BR.current.bolsonaro * 100
-  console.log(extrapolador(partials))
+  //console.log(extrapolador(partials))
   const { lulaPercent, bolsonaroPercent } = extrapolador(partials)
 
   return (
