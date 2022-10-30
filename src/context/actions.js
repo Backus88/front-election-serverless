@@ -1,4 +1,4 @@
-import { listElectionPartials } from '../graphql/queries'
+import { listElectionPartials, listSorted } from '../graphql/queries'
 import { API } from 'aws-amplify'
 import { onChangeElectionPartial } from '../graphql/subscriptions'
 
@@ -12,7 +12,10 @@ export const actions = {
 export const initialFetch = async () => {
   const response = await API.graphql({
     query: listElectionPartials,
-    variables: { limit: 999999999 },
+    variables: {
+      limit: 999999999,
+      // sortDirection: 'DESC'
+    },
   })
 
   console.log('items', response?.data?.listElectionPartials?.items)

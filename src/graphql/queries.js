@@ -44,3 +44,36 @@ export const listElectionPartials = /* GraphQL */ `
     }
   }
 `;
+export const listSorted = /* GraphQL */ `
+  query ListSorted(
+    $id: ID!
+    $updateTime: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelElectionPartialFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSorted(
+      id: $id
+      updateTime: $updateTime
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        uf
+        updateTime
+        fetchTime
+        votesCount
+        votesProportion
+        bolsonaro
+        lula
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
