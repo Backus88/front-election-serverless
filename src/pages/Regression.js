@@ -72,6 +72,38 @@ export default function Regression() {
             lulaPred: 48.5,
             bolsoPred: 51.5,
             amt: 2290,
+        },
+        {
+          name: '19:00',
+          lula: null,
+          bolso: null,
+          lulaPred: 48.5,
+          bolsoPred: 51.5,
+          amt: 2290,
+      },
+        {
+          name: '20:00',
+          lula: null,
+          bolso: null,
+          lulaPred: 48.5,
+          bolsoPred: 51.5,
+          amt: 2290,
+        },
+        {
+          name: '21:00',
+          lula: null,
+          bolso: null,
+          lulaPred: 48.5,
+          bolsoPred: 51.5,
+          amt: 2290,
+        },
+        {
+          name: '22:00',
+          lula: null,
+          bolso: null,
+          lulaPred: 48.5,
+          bolsoPred: 51.5,
+          amt: 2290,
         }
     ];
 
