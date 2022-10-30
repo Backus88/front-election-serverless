@@ -30,3 +30,11 @@ export const DivBarChart = styled.div `
     display: flex;
     flex-direction: row;
 `;
+
+export const HorizontalBarBolso = styled(HorizontalBar)`
+    border-radius: 0 5px 5px 0;
+`;
+
+export const HorizontalBarLula = styled(HorizontalBar)`
+    border-radius: 5px 0 0 5px;
+`;

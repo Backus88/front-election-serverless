@@ -60,7 +60,7 @@ export default function CardHome({ title, icon, type }) {
           </Feed.Event>
         </Feed>
       </Card.Content>
-      {!type && (
+      {type ==='parcial' && (
         <Card.Content extra style={styleFoot}>
           {`${votesProportionPercent}% de apuração`}
           <span style={{ float: 'right' }}>{`${partials.byUf.BR.current.votesCount} votos`}</span>

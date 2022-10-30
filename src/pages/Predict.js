@@ -2,21 +2,29 @@ import { React, useContext } from 'react'
 import CardPrediction from '../components/Card/CardPrediction'
 import { MainContainer, CarouselContainer } from '../components/Containers'
 import Header from '../components/Header/Header'
-import Title from '../components/Title'
 import 'pure-react-carousel/dist/react-carousel.es.css'
-import { ufData } from '../mock/ufs'
 import { ElectionContext } from '../context/Provider'
 
 export default function Predict() {
-  const state = useContext(ElectionContext)
-  console.log('statePredict', state)
+  const {partials}= useContext(ElectionContext)
+
+
+
   return (
     <>
       <Header />
       <MainContainer> 
         <CarouselContainer>
-          {ufData.map((item, index) => {
-            return <CardPrediction title={item} key={index} />
+          {Object.values(partials.byUf).map((item, index) => {
+            console.log(item.current.votesProportion)
+            return <CardPrediction 
+              title={item.uf} 
+              key={index} 
+              lulaPercent= {item.current.lula} 
+              bolsonaroPercent = {item.current.bolsonaro} 
+              percentVoted = {item.current.votesProportion*100}
+              countedVotes = {item.current.votesCount}
+              />
           })}
         </CarouselContainer>
       </MainContainer>
