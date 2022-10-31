@@ -14,6 +14,9 @@
     "categories": {
       "api": {
         "election": {}
+      },
+      "auth": {
+        "electiond3ac3560": {}
       }
     }
   }

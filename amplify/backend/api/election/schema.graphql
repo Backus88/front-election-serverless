@@ -4,7 +4,7 @@ input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
 type ElectionPartial @model(subscriptions: null) {
-  id: ID!
+  id: ID! @index(name: "IdIndex", queryField: "listSorted", sortKeyFields: ["updateTime"])
   uf: String!
   updateTime: AWSDateTime!
   fetchTime: AWSDateTime!
