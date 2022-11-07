@@ -87,9 +87,11 @@ export function dataCreation(history){
    const sortedData = filledData.sort((a,b)=>{
     return a.number - b.number;
    })
-   const filteredPredict = predictData.filter((item)=> item.number>= sortedData[sortedData.length -1]?.number)
-   const end = filledData.concat(filteredPredict)
-   console.log('predicData', sortedData )
+   const filteredPredict = predictData.filter((item)=> item.number>= sortedData[sortedData.length -1]?.number);
+   filteredPredict[0].lula = filteredPredict[0]?.lulaPred;
+   filteredPredict[0].bolso = filteredPredict[0]?.bolsoPred;
+   const end = filledData.concat(filteredPredict);
+   console.log('predicData', sortedData );
    return end
 }
 
