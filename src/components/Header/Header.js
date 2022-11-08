@@ -6,7 +6,7 @@ import DropdownFilterUF from '../Dropdown/DropdownFilterUF'
 import { Grid } from 'semantic-ui-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect'
-import './styles/semantic-ui-css/semantic.min.css';
+
 
 export default function Header() {
   const navigate = useNavigate()

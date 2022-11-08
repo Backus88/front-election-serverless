@@ -18,6 +18,7 @@ export const initialFetch = async () => {
     },
   })
 
+  console.log('oi',response);
   console.log('items', response?.data?.listElectionPartials?.items)
 
   return { type: actions.INITIAL_FETCH, payload: { items: response?.data?.listElectionPartials?.items } }
