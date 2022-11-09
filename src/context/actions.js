@@ -18,10 +18,12 @@ export const initialFetch = async () => {
     },
   })
 
-  console.log('oi',response);
-  console.log('items', response?.data?.listElectionPartials?.items)
-
-  return { type: actions.INITIAL_FETCH, payload: { items: response?.data?.listElectionPartials?.items } }
+  
+  const data = response?.data?.listElectionPartials?.items.sort((a,b)=>{
+    return a.votesProportion - b.votesProportion
+  } )
+  
+  return { type: actions.INITIAL_FETCH, payload: { items: data } }
 }
 
 export const addPartial = (dispatch) => {
@@ -30,7 +32,6 @@ export const addPartial = (dispatch) => {
   }).subscribe({
     next: ({ provider, value }) => {
       const payload = value.data.onChangeElectionPartial
-      console.log('onChangeElectionPartial', payload)
       dispatch({ type: actions.ADD_PARTIAL, payload })
     },
     error: (error) => console.warn('error', error),

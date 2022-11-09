@@ -91,7 +91,6 @@ export function dataCreation(history){
    filteredPredict[0].lula = filteredPredict[0]?.lulaPred;
    filteredPredict[0].bolso = filteredPredict[0]?.bolsoPred;
    const end = filledData.concat(filteredPredict);
-   console.log('predicData', sortedData );
    return end
 }
 

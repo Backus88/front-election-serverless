@@ -15,14 +15,13 @@ export default function Regression() {
   const lulaPercent = partials.byUf.BR.current.lula *100|| 0
   const bolsoPercent = partials.byUf.BR.current.bolsonaro *100|| 0
   const updateTime = partials.byUf.BR.current.updateTime || '00:00'
-  console.log("react", partials?.byUf?.BR?.history)
 
   let newData =[];
   if(partials?.byUf?.BR?.history.length !== 0){
     newData = dataCreation(partials?.byUf?.[partials.regFilter|| 'BR'].history)
   }
   
-  
+  console.log(partials?.byUf?.[partials.regFilter|| 'BR'])
 
 
     class CustomizedLabel extends PureComponent {
@@ -57,11 +56,11 @@ export default function Regression() {
             <Header />
             <MainContainer>
               <CardRegression 
-                title={'BR'} 
-                percentVoted={votedCount*100}
-                lulaPercent={lulaPercent}
-                bolsoPercent={bolsoPercent}
-                updateTime={updateTime}/>
+                title={partials?.byUf?.[partials.regFilter|| 'BR'].current.uf} 
+                percentVoted={partials?.byUf?.[partials.regFilter|| 'BR'].current.votesProportion*100}
+                lulaPercent={partials?.byUf?.[partials.regFilter|| 'BR'].current.lula*100}
+                bolsoPercent={partials?.byUf?.[partials.regFilter|| 'BR'].current.bolsonaro*100}
+                updateTime={partials?.byUf?.[partials.regFilter|| 'BR'].current.updateTime}/>
               <RegressionContainer>
                   <ResponsiveContainer width="100%" height="88%">
                       <LineChart

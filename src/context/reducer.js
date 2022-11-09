@@ -2,7 +2,6 @@ import { actions } from './actions'
 import { initialState } from './initialState'
 
 export function reducer(state = initialState, action) {
-  console.log('action', action)
   switch (action.type) {
     case actions.INITIAL_FETCH:
       if (!action?.payload?.items) return state

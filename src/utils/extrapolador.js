@@ -11,9 +11,8 @@ export default function extrapolador(partials){
             }
         }
     }
-    console.log(lula);
-    const percentLula = Math.floor(((lula*100)/(lula+bolso))*100)/100; 
-    const percentBolso= Math.floor(((bolso*100)/(lula+bolso))*100)/100; 
+    const percentLula = (Math.floor(((lula*100)/(lula+bolso))*100)/100).toFixed(4); 
+    const percentBolso= (Math.floor(((bolso*100)/(lula+bolso))*100)/100).toFixed(4); 
     return({
         lulaPercent:percentLula,
         bolsonaroPercent:percentBolso,

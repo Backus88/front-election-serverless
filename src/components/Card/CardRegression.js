@@ -16,12 +16,12 @@ export default function CardRegression({title,percentVoted, lulaPercent, bolsoPe
             </CardHeader>
             <ColumnDiv>
                 {lulaPercent?
-                    <h4>Lula: <b>{lulaPercent}%</b></h4>
+                    <h4>Lula: <b>{(lulaPercent).toFixed(2)}%</b></h4>
                 :
                     <h4>Lula: xx%</h4>  
                 }
                 {bolsoPercent?
-                    <h4>Bolsonaro: <b>{bolsoPercent}%</b></h4>
+                    <h4>Bolsonaro: <b>{(bolsoPercent).toFixed(2)}%</b></h4>
                 :
                     <h4>Bolsonaro: xx%</h4>  
                 }

@@ -12,7 +12,6 @@ const predictionCardHeight = '150px'
 export default function CardHome({ title, icon, type }) {
   const navigate = useNavigate()
   const { partials } = useContext(ElectionContext)
-  console.log('partials', partials)
 
   const votesProportionPercent = round(partials.byUf.BR.current.votesProportion, 2) * 100 || 0
   const lulaParcial = partials.byUf.BR.current.lula * 100
